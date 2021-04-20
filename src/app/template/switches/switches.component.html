@@ -1,0 +1,76 @@
+<h2>Template: Switches</h2>
+<hr>
+
+<form #miFormulario="ngForm">
+
+  <!-- Radio -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Género</label>
+    <div class="col-sm-9">
+
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="radioGenero" id="radioMasculino" value="M"
+          [(ngModel)]="persona.genero" required>
+        <label class="form-check-label" for="radioMasculino">Masculino</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="radioGenero" id="radioFemenino" value="F"
+          [(ngModel)]="persona.genero" required>
+        <label class="form-check-label" for="radioFemenino">Femenino</label>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Switches -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notificaciones</label>
+    <div class="col-sm-9">
+
+      <div class="form-check form-switch mt-2">
+        <input type="checkbox" class="form-check-input" id="checkNotificaciones" name="notificaciones"
+          [(ngModel)]="persona.notificaciones">
+        <label class="form-check-label" for="checkNotificaciones">Quiero recibir notificaciones</label>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Checkbox -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" value="" id="checkboxTerminosCondiciones" name="terminos"
+          [(ngModel)]="terminosYCondiciones" required>
+        <label class="form-check-label" for="checkboxTerminosCondiciones">Terminos y condiciones de uso</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Boton submit -->
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary float-end" [disabled]="miFormulario.invalid">Guardar</button>
+    </div>
+  </div>
+
+</form>
+
+<span>Valor del formulario</span>
+<pre>{{ miFormulario.value | json }}</pre>
+<br>
+
+<span>Persona</span>
+<pre>{{ persona | json }}</pre>
+<br>
+
+<h5>Valid</h5>
+<pre> {{ miFormulario.valid | json}}</pre>
+<br>
+
+<h5>Términos</h5>
+<pre> {{ miFormulario.controls?.terminos?.errors | json }}</pre>
+<br>
+
+<pre>Condiciones: </pre>
